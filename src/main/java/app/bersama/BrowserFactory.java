@@ -20,6 +20,8 @@ public class BrowserFactory {
         // launch chrome browser
         if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--disable-notifications");
             webDriver = new ChromeDriver();
 
         // launch headless chrome browser
@@ -27,6 +29,7 @@ public class BrowserFactory {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.setHeadless(true);
+            options.addArguments("--headless");
             options.addArguments("--disable-gpu");
             webDriver = new ChromeDriver(options);
 

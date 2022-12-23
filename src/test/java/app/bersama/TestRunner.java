@@ -14,7 +14,7 @@ import java.time.Duration;
  * @project java-cucumber-learning
  */
 
-@CucumberOptions(features = "features",
+@CucumberOptions(features = "features/Login.feature",
         glue = "app.bersama.steps",
         tags = "",
         plugin = {
@@ -33,9 +33,9 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     @BeforeMethod
     public void setupBrowser() {
-        WebDriver webDriver = new BrowserFactory().launchBrowser("headless chrome");
+        WebDriver webDriver = new BrowserFactory().launchBrowser("chrome");
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
         DriverManager.getInstance().setDriver(webDriver);
     }
 

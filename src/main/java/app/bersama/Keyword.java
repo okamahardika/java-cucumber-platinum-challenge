@@ -73,4 +73,16 @@ public class Keyword {
             e.printStackTrace();
         }
     }
+
+    public static void alertHandler(boolean isAccepted){
+        if (isAccepted){
+            DriverManager.getInstance().getDriver().switchTo().alert().accept();
+        } else {
+            DriverManager.getInstance().getDriver().switchTo().alert().dismiss();
+        }
+    }
+
+    public static String getTextAllert () {
+        return  DriverManager.getInstance().getDriver().switchTo().alert().getText();
+    }
 }

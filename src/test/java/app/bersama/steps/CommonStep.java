@@ -8,6 +8,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 
 /**
  * @author regiewby on 05/12/22
@@ -23,23 +24,16 @@ public class CommonStep {
     @When("login as {string}")
     public void loginAs(String credentialType) {
 
-        String userName = "";
+        HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
+        homePage.clickButtonLogin();
+
+        String email = "";
         String password = "";
 
         switch (credentialType) {
-            case "standard_user":
-                userName = "standard_user";
-                password = "secret_sauce";
-                break;
-
-            case "locked_out_user":
-                userName = "locked_out_user";
-                password = "secret_sauce";
-                break;
-
-            case "invalid_user":
-                userName = "invalid_user";
-                password = "wrong_password";
+            case "valid_credential":
+                email = "kenadijaya@gmail.com";
+                password = "123123123";
                 break;
 
             default:
@@ -47,7 +41,8 @@ public class CommonStep {
         }
 
         LoginPage loginPage = new LoginPage(DriverManager.getInstance().getDriver());
-        loginPage.userLogin(userName, password);
+        loginPage.userLogin(email, password);
+
     }
 
     @Then("current url should be {string}")
@@ -55,15 +50,4 @@ public class CommonStep {
         Keyword.assertCurrentUrl(expectedUrl);
     }
 
-
-    @Then("user logout")
-    public void userLogout() {
-        HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
-        homePage.userLogout();
-    }
-
-    @And("user take screenshot full page with name {string}")
-    public void userTakeScreenshotFullPageWithName(String fileName) {
-        Keyword.takeScreenshot(fileName);
-    }
 }

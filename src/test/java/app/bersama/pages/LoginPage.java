@@ -23,26 +23,22 @@ public class LoginPage {
         PageFactory.initElements(webDriver, this);
     }
 
-    @FindBy(id = "user-name")
-    private WebElement input_username;
+    @FindBy(xpath = "//input[@id='exampleInputEmail1']")
+    private WebElement txtEmail;
 
-    @FindBy(id = "password")
-    private WebElement input_password;
+    @FindBy(xpath = "//input[@id='exampleInputPassword1 ']")
+    private WebElement txtPassword;
 
-    @FindBy(id = "login-button")
-    private WebElement button_login;
+    @FindBy(xpath = "//button[@class='btn btn-primary w-100']")
+    private WebElement btnLogin;
 
-    @FindBy(xpath = "//h3[@data-test='error']")
-    private WebElement snackbar_error;
+    @FindBy (xpath = "//button[@id='notification']")
+    private WebElement btnNotification;
 
-    public void userLogin(String userName, String password) {
-        Keyword.inputText(input_username, userName);
-        Keyword.inputText(input_password, password);
-        Keyword.tapElement(button_login);
-    }
-
-    public void verifyErrorMessage(String expectedMessage) {
-        String actual = snackbar_error.getText();
-        Assert.assertEquals(actual, expectedMessage);
+    public void userLogin(String email, String password) {
+        Keyword.inputText(txtEmail, email);
+        Keyword.inputText(txtPassword, password);
+        Keyword.tapElement(btnLogin);
+        Keyword.waitElementToBeDisplayed(btnNotification);
     }
 }
