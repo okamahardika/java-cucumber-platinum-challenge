@@ -27,8 +27,19 @@ public class HomePage {
     @FindBy(xpath = "//li[@class='nav-item-login']")
     private WebElement btnLogin;
 
+    @FindBy(xpath = "//a[@class='btn btn-color-theme pl-3 pr-3 button-jual']")
+    private WebElement btnJual;
+
     public void clickButtonLogin(){
         Keyword.tapElement(btnLogin);
+    }
+
+    public void addedProduct(){
+        Keyword.tapElement(btnJual);
+    }
+
+    public void waitBtnAddProduct(){
+        Keyword.waitElementToBeDisplayed(btnJual);
     }
 
 }
