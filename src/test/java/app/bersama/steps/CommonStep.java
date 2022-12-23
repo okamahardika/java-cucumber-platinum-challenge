@@ -15,10 +15,9 @@ import io.cucumber.java.en.When;
  */
 public class CommonStep {
 
-
-    @Given("navigate to url {string}")
-    public void navigateToUrl(String url) {
-        Keyword.navigateToUrl(url);
+    @Given("navigate to url")
+    public void navigate_to_url() {
+        Keyword.navigateToUrl("https://secondhand-store.herokuapp.com/");
     }
 
     @When("login as {string}")
