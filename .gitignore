@@ -1,6 +1,5 @@
 .idea
 target
-reports
 *.class
 apk
 /*.apk

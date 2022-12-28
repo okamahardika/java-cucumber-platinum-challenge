@@ -14,7 +14,7 @@ import java.time.Duration;
  * @project java-cucumber-learning
  */
 
-@CucumberOptions(features = "features/AddProduct.feature",
+@CucumberOptions(features = "features/AddOfferItem.feature",
         glue = "app.bersama.steps",
         tags = "",
         plugin = {

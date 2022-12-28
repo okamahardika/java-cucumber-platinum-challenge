@@ -5,7 +5,6 @@ import app.bersama.TestDataProvider;
 import app.bersama.pages.AddProduct;
 import app.bersama.pages.HomePage;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class AddedProduct {

@@ -3,12 +3,15 @@ package app.bersama;
 import app.bersama.enums.FileType;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.File;
 import java.time.Duration;
+
+import static org.apache.commons.io.FileUtils.waitFor;
 
 /**
  * @author regiewby on 07/12/22
@@ -43,6 +46,17 @@ public class Keyword {
     public static void waitElementToBeDisplayed(WebElement element) {
         WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(25));
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void scrollIntoView(WebElement target) throws InterruptedException {
+        JavascriptExecutor je = (JavascriptExecutor) DriverManager.getInstance().getDriver();
+        je.executeScript("arguments[0].scrollIntoView(true);", target);
+        Thread.sleep(800);
+    }
+
+    public static void waitUntilElementIsClickable(WebElement webElement){
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), 30);
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public static void takeScreenshot() {
